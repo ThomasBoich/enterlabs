@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-y@ix5e@r5fut%#i53-h0rvx!lpx939$l%uac#_r2hh3l08ltec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'localhost', 'demo.boich.ru', 'demo.boich.ru:8099']
 
 
 # Application definition
@@ -158,3 +158,4 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome to the Enterlabs",
     
 }
+CSRF_TRUSTED_ORIGINS=["http://demo.boich.ru","https://demo.boich.ru"]
