@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from users.forms import CustomUserCreationForm, CustomAuthenticationForm
+from users.forms import CustomUserCreationForm, CustomAuthenticationForm, UserUpdateForm
 
 
 # Create your views here.
@@ -85,3 +86,22 @@ def shop(request):
         'title': 'Магазин витаминов',
     }
     return render(request, 'index/shop.html', context)
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.phone = '+' + ''.join([char for char in form.phone if char.isdigit()])
+            form.save()
+            messages.success(request, f'Ваш профиль успешно обновлен.')
+            return redirect('profile')
+
+    else:
+       form = UserUpdateForm(instance=request.user)
+        # p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    return render(request, 'index/profile.html', {'form': form,})

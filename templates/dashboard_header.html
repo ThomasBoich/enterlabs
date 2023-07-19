@@ -1,0 +1,85 @@
+<!DOCTYPE html>{%load static%}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACCAUNT {{title}}</title>
+    <link href="{%static 'css/style.css'%}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="nav navigation" id="nav navigation">
+            <div class="nav-layer" id="nav-layer">
+                <div class="nav-logo-nav-layer" id="nav-logo-nav-layer">
+                    <div class="logotype" id="logotype">
+                        <a href="{%url 'index'%}">EnterLabs</a>
+
+                    </div>
+                    <ul>
+                        <li><a href="{%url 'index'%}">Главная</a></li>
+<!--                        <li><a href="">Анализы</a></li>-->
+                        <li><a href="{%url 'shop'%}">Витамины</a></li>
+                        <li><a href="{%url 'blog'%}">Блог</a></li>
+                        <li><a href="{%url 'about'%}">О компании</a></li>
+                    </ul>
+                </div>
+<!--                <div class="nav-user-info-layer" id="nav-user-info-layer">-->
+<!--                    <img src="img/1177568.png" alt="" class="dropdown" id="dropdown">-->
+<!--                    <div class="drop-down" id="drop-down">-->
+<!--                        <a href="">Профиль</a>-->
+<!--                        <a href="">Истрия расшифровок</a>-->
+<!--                        <a href="">Здоровье</a>-->
+<!--                        <a href="">Выйти</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+                				{%if request.user.is_authenticated%}
+				<div class="nav-user-info-layer" id="nav-user-info-layer">
+					<div class="" id="dropdown">
+					{{user.email}}
+                    <img src="{%static 'img/1177568.png'%}" alt="" class="dropdown">
+					</div>
+                    <div class="drop-down" id="drop-down">
+                        <a href="">Профиль</a>
+<!--                        <a href="">Истрия расшифровок</a>-->
+<!--                        <a href="">Здоровье</a>-->
+                        <a href="{%url 'logout'%}">Выйти</a>
+                    </div>
+                </div>
+				{%else%}
+				<div class="nav-user-info" id="nav-user-info">
+					<a href="#" class="sign_in" id="sign_in">Войти</a>
+					<a href="#" class="sign_up" id="sign_up">Создать аккаунт</a>
+				</div>
+				{%endif%}
+            </div>
+        </div>
+    </header>
+
+    <!--header-->
+    <div class="cabinet-layer" id="cabinet-layer">
+        <div class="cabinet-layer-navigation" id="cabinet-layer-navigation">
+            <div class="cabinet-navigation" id="cabinet-navigation">
+                <div class="" id="">
+                    <h1>Личные данные</h1>
+                </div>
+<!--                <div class="" id=""><a href="" class="order-transcript" id="order-transcript">Заказать расшифровку</a>-->
+                </div>
+            </div>
+            <div class="cabinet-links" id="cabinet-links">
+                <ul>
+<!--                    <li><a href="" class="active" id="active"><img src="{%static 'img/ECG.svg'%}" alt="">Здоровье</a></li>-->
+<!--                    <li><a href="" class="" id=""><img src="{%static 'img/Order History.svg'%}" alt="">История расшифровок</a></li>-->
+                    <li><a href="" class="" id=""><img src="{%static 'img/'%}" alt="">Личные данные</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--header-->

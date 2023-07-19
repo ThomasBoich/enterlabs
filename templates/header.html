@@ -20,7 +20,8 @@
 	<div class="hidden_nav_layer" id="hidden_nav_layer">
 		<div class="hidden_nav" id="hidden_nav">
 			{%if request.user.is_authenticated%}<h2>{{user.email}}</h2>{%else%}{%endif%}
-			<a href="">Главная</a>
+			<a href="{%url 'index'%}">Главная</a>
+			<a href="{%url 'profile'%}">Профиль</a>
 <!--			<a href="">Анализы</a>-->
 			<a href="{%url 'about'%}">О компании</a>
 			<a href="{%url 'blog'%}">Блог</a>
@@ -38,8 +39,8 @@
 					</div>
 					<ul>
 						<li><a href="/">Главная</a></li>
-<!--						<li style="opacity:0.2;"><a href="" style="cursor: not-allowed;">Анализы</a></li>-->
-						<li style="opacity:0.2;"><a href="" style="cursor: not-allowed;">Витамины</a></li>
+<!--						<li style="opacity:0.2;"><a href="" style="cursor: not-allowed;">Анализы</a></li>opacity:0.2;cursor: not-allowed;-->
+						<li style=""><a href="{%url 'shop'%}" style="">Витамины</a></li>
 						<li style=""><a href="{%url 'blog'%}" style="">Блог</a></li>
 						<li><a href="{%url 'about'%}">О компании</a></li>
 					</ul>
@@ -51,7 +52,7 @@
                     <img src="{%static 'img/1177568.png'%}" alt="" class="dropdown">
 					</div>
                     <div class="drop-down" id="drop-down">
-                        <a href="">Профиль</a>
+                        <a href="{%url 'profile'%}">Профиль</a>
 <!--                        <a href="">Истрия расшифровок</a>-->
 <!--                        <a href="">Здоровье</a>-->
                         <a href="{%url 'logout'%}">Выйти</a>

@@ -2,7 +2,7 @@ from django.urls import path
 
 from blog.views import blog, post
 from users.views import AppLogoutView, login_modal, register_modal
-from .views import index, about, shop
+from .views import index, about, shop, profile
 
 urlpatterns = [
     path('', index, name='index'),
@@ -13,4 +13,5 @@ urlpatterns = [
     path('register/', register_modal, name='register_modal'),
     path('login/', login_modal, name='login_modal'),
     path('shop/', shop, name='shop'),
+    path('profile/', profile, name='profile'),
 ]
