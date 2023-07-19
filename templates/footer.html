@@ -1,0 +1,116 @@
+	<footer>{%load static%}
+		<div class="footer" id="footer">
+			<div class="footer-layer" id="footer-layer">
+				<ul class="" id="">
+					<span>О компании</span>
+					<li><a href="" class="" id="">О нас</a></li>
+					<li><a href="" class="" id="">Карьера</a></li>
+					<li><a href="" class="" id="">Блог</a></li>
+				</ul>
+				<ul class="" id="">
+					<span>Важно</span>
+					<li><a href="" class="" id="">Оферта</a></li>
+					<li><a href="" class="" id="">Политика
+							конфеденциальности</a></li>
+					<li><a href="" class="" id="">Пользовательское соглащение</a></li>
+				</ul>
+				<ul class="" id="">
+					<span>Услуги</span>
+					<li><a href="" class="" id="">Подбор витаминов</a></li>
+					<li><a href="" class="" id="">Расшифровка анализов</a></li>
+					<li><a href="" class="" id="">Консультации врачей</a></li>
+				</ul>
+				<ul class="" id="">
+					<span>Ресурсы</span>
+					<li><a href="" class="" id="">IOS & Android</a></li>
+					<li><a href="" class="" id="">Разработчикам</a></li>
+					<li><a href="" class="" id="">API</a></li>
+				</ul>
+				<ul class="" id="">
+					<span>Связь с нами</span>
+					<li><a href="" class="" id="">(499) 555-0103</a></li>
+					<li><a href="" class="" id="">4517 Washington Ave.<br> Manchester,
+							Kentucky 39495</a></li>
+					<li><a href="" class="" id="">site@example.com</a></li>
+				</ul>
+			</div>
+			<div class="footer-copyright" id="footer-copyright">
+				<div class="footer-copyright-layer" id="footer-copyright-layer">
+					<a href="" class="" id="">2022 © enterlabs.ru</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="{%static 'js/javascript.js'%}"></script>
+	<script>
+
+		// const footerHeight = document.getElementById('footer').clientHeight;
+		// const watchId = document.getElementById('watchId').innerText = footerHeight;
+
+		// const windowIN = window.onscroll;
+		// if (windowIN < footerHeight) {
+		// 	document.getElementById('nav').style.background = 'blue'
+		// } else {
+		// 	document.getElementById('nav').style.background = 'transparent'
+		// }
+
+		// window.onresize = () => {
+		// 	if (window.innerHeight < footerHeight) {
+		// 		document.getElementById('nav').style.background = 'blue'
+		// 	}
+		// 	else {
+		// 		document.getElementById('nav').style.background = 'transparent'
+		// 	}
+		// }
+		// const scroll =
+		window.addEventListener('scroll', function () {
+			scrollpage = pageYOffset;
+			if (scrollpage > 0) {
+				document.getElementById('nav').style.background = 'white'
+			} else {
+				document.getElementById('nav').style.background = 'transparent'
+			}
+		});
+
+		const sign_in = document.getElementById('sign_in');
+		const modal_login = document.getElementById('login');
+		const modal_registration = document.getElementById('registration');
+
+		sign_in.addEventListener('click', function () {
+			modal_login.classList.add('active')
+		});
+
+		const close = document.getElementById('close_login');
+		close.addEventListener('click', function () {
+			modal_login.classList.remove('active')
+		});
+
+		const sign_up = document.getElementById('sign_up')
+		sign_up.addEventListener('click', function () {
+			modal_registration.classList.add('active')
+		});
+
+		const close_registration = document.getElementById('close_registration');
+		close_registration.addEventListener('click', function () {
+			modal_registration.classList.remove('active')
+		});
+
+		window.onclick = function (event) {
+			if (event.target == modal_login) {
+				modal_login.classList.remove('active');
+			}
+			if (event.target == modal_registration) {
+				modal_registration.classList.remove('active');
+			}
+		};
+		// const footerHeight = document.getElementById('footer').clientHeight;
+		// const watchHeight = document.getElementById('watchHeight').innerText = windowHeight;
+
+
+
+	</script>
+<script>
+			document.getElementById('get_user_navigation').addEventListener("click", () => {
+					document.getElementById('hidden_nav_layer').classList.toggle('active');
+		});
+</script>

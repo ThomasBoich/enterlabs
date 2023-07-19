@@ -1,0 +1,76 @@
+{%include 'header.html'%}{%load static%}
+{%block content%}
+	<div class="one-screen" id="one-screen">
+		<div class="one-screen-layer" id="one-screen-layer">
+			<div class="one-screen-layer-one" id="one-screen-layer-one">
+				<span>Welcome</span>
+				<h1>Лаборатория
+					Вашего здоровья</h1>
+				<p>Lorem Ipsum выглядит правдоподобно, не
+					имеет повторяющихся абзацей или.
+				</p>
+				<div id="one-screen-layer-two-info" class="one-screen-layer-two-info">
+					<a href="" class="invite" id="invite">Заказать расшифровку</a>
+					<a href="" class="info" id="info">Узнать о витаминах</a>
+				</div>
+			</div>
+			<div class="one-screen-layer-two" id="one-screen-layer-two">
+				<img src="{% static 'img/hero-cover-1.png' %}" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="two-screen" id="two-screen">
+		<div class="two-screen-layer" id="two-screen-layer">
+			<div class="two-screen-text" id="two-screen-text">
+				<span>Практический совет </span>
+				<h2>Наша деятельность</h2>
+				<p>Есть много вариантов Lorem Ipsum, но большинство из них имеет
+					не всегда приемлемые модификации, например, юмористические вставки</p>
+			</div>
+			<div class="two-screen-info-layer" id="two-screen-info-layer">
+				<div class="two-screen-info" id="two-screen-info"><img src="{% static 'img/icon cool-icon-11.svg' %}" alt="">
+					<h2>Экстренная ситуация</h2>
+					<span></span>
+					<p>Английский перевод 1914
+						года, H. Rackham
+					</p>
+				</div>
+				<div class="two-screen-info" id="two-screen-info"><img src="{% static 'img/icon cool-icon-18.svg' %}" alt="">
+					<h2>Запросы о здоровье</h2>
+					<span></span>
+					<p>Английский перевод 1914
+						года, H. Rackham
+					</p>
+				</div>
+				<div class="two-screen-info" id="two-screen-info"><img src="{% static 'img/009-web.svg' %}" alt="">
+					<h2>Безболезненные процедуры</h2>
+					<span></span>
+					<p>Английский перевод 1914
+						года, H. Rackham
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mail-subscription" id="mail-subscription">
+		<div class="mail-subscription-layer" id="mail-subscription-layer">
+			<div class="mail-subscription-liric" id="mail-subscription-liric">
+				<span id="watchId">Новостная рассылка</span>
+				<h2 id="watchHeight">Подпишитесь на нас</h2>
+				<p>
+					Узнавайте первыми о всех новинках в мире витаминов и генной
+					инжинерии
+				</p>
+			</div>
+			<form action="" method="post">
+				<input type="mail" placeholder="Электронная почта" /><button type="submit">
+					Подписаться
+				</button>
+			</form>
+		</div>
+	</div>
+{%endblock%}
+{%include 'footer.html'%}
+</body>
+</html>

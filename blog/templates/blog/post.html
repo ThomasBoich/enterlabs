@@ -1,0 +1,14 @@
+{%extends 'index.html'%}
+{%block content%}
+<div class="blog-layer">
+    <div class="blog-content">
+        <h1>{{post.title}}</h1>
+        <p>{{post.date_creation}}</p>
+            <div class="blog-post-item">
+                <div class="blog-post-item-content">
+                    <p>{{post.text|safe}}</p>
+                </div>
+            </div>
+    </div>
+</div>
+{%endblock%}

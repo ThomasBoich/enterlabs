@@ -1,0 +1,19 @@
+<div class="modal" id="registration">
+    <form method="post" action="{%url 'register_modal'%}">
+          {%csrf_token%}
+        <span class="close" id="close_registration">Х</span>
+        <div class="form-layer" id="form-layer">
+            <h1>Регистрация</h1>
+<!--                  <label for="email">Email:</label>-->
+<!--                  <input type="email" id="email" name="email">-->
+<!--                  <br>-->
+<!--                  <label for="password1">Пароль:</label>-->
+<!--                  <input type="password" id="password1" name="password1">-->
+<!--                  <br>-->
+<!--                  <label for="password2">Пароль еще раз:</label>-->
+<!--                  <input type="password" id="password2" name="password2">-->
+<!--                  <br>-->{{form.as_p}}
+            <button type="submit">Зарегистрироваться</button>
+        </div>
+    </form>
+</div>
