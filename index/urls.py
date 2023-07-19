@@ -1,6 +1,7 @@
 from django.urls import path
 
 from blog.views import blog, post
+from subscribe.views import SubscribeView
 from users.views import AppLogoutView, login_modal, register_modal
 from .views import index, about, shop, profile
 
@@ -14,4 +15,5 @@ urlpatterns = [
     path('login/', login_modal, name='login_modal'),
     path('shop/', shop, name='shop'),
     path('profile/', profile, name='profile'),
+    path('subscribe/', SubscribeView.as_view(), name='subscribe_form'),
 ]

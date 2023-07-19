@@ -38,10 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',
     'shop',
     'index',
+    'ckeditor',
     'blog',
+    'subscribe',
+    'api',
+    'rest_framework',
+    'drf_yasg',
     'users'
 ]
 
@@ -57,6 +61,9 @@ CKEDITOR_CONFIGS = {
         'removePlugins': 'image2',
     },
 }
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

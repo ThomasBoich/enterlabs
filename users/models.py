@@ -15,7 +15,6 @@ from .managers import CustomUserManager
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=254, unique=True, verbose_name='Электронная почта')
-    # password = models.CharField(_("password"), max_length=255, null=False)
     first_name = models.CharField(u"Имя", max_length=100, blank=True, null=True)
     last_name = models.CharField(u"Фамилия", max_length=100, blank=True, null=True)
     patronymic = models.CharField(u"Отчество", max_length=100, blank=True, null=True)

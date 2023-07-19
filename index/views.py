@@ -9,7 +9,6 @@ from users.forms import CustomUserCreationForm, CustomAuthenticationForm, UserUp
 # Create your views here.
 
 
-
 def login_view(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request=request, data=request.POST)
@@ -27,8 +26,6 @@ def login_view(request):
     else:
         form = CustomAuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
-
-
 
 def index(request):
     if request.method == 'POST':
@@ -67,20 +64,6 @@ def about(request):
     return render(request, 'index/about.html', context)
 
 
-# def register(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             email = form.cleaned_data.get('email')
-#             password = form.cleaned_data.get('password1')
-#             user = authenticate(request, email=email, password=password)
-#             login(request, user)
-#             return redirect('index')
-#     else:
-#         form = CustomUserCreationForm()
-#     return render(request, {'form': form})
-
 def shop(request):
     context = {
         'title': 'Магазин витаминов',
@@ -102,6 +85,5 @@ def profile(request):
 
     else:
        form = UserUpdateForm(instance=request.user)
-        # p_form = ProfileUpdateForm(instance=request.user.profile)
 
     return render(request, 'index/profile.html', {'form': form,})

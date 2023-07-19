@@ -29,27 +29,4 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
     readonly_fields = ('id',)
 
-
-# class MedCardAdmin(admin.ModelAdmin):
-#     save_as = True
-#     list_display = ['user', 'age', 'height', 'blood', 'weight']
-#     search_fields = ['user', 'age', 'height', 'blood', 'weight']
-#     readonly_fields = ['user']
-#
-#
-# class ProfileAdmin(admin.ModelAdmin):
-#     save_as = True
-#     list_display = ['user']
-#     search_fields = ['user']
-#     readonly_fields = ['user']
-
-
-# class ActionAdmin(admin.ModelAdmin):
-#     readonly_fields = ['id', 'pub_date']
-
-
-# admin.site.register(Profile, ProfileAdmin)
-# admin.site.register(Vizit)
-# admin.site.register(MedCard, MedCardAdmin)
 admin.site.register(CustomUser, CustomUserAdmin)
-# admin.site.register(Action, ActionAdmin)

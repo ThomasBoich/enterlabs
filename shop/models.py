@@ -70,7 +70,6 @@ class CartItem(models.Model):
     def get_cost(self):
         return self.quantity * self.product.price
 
-
 class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50)
