@@ -1695,14 +1695,16 @@ form {
     width: 95%;
     max-width: 1460px;
     margin: auto auto 100px;
-    padding: 100px 0px
+    padding: 100px 0px;
+    padding: 12vh 0vh;
 }
 
 #company-layer {
     width: 95%;
     max-width: 1460px;
     margin: auto auto 100px;
-    padding: 100px 0px
+    padding: 100px 0px;
+    padding: 12vh 0vh;
 }
 
 .company-layer-text {}
