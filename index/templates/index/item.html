@@ -5,26 +5,65 @@
 			<h1 style="margin: 0px 0px 5px 0px;border-bottom: 2px solid #e8e8e8;padding: 20px 0px 20px 0px;font-size: 40px;margin: auto auto 20px;">{{item.name}}</h1>
 
 				<div class="shop_layer">
-					<div class="shop_filter">
-						<ul>
-							<li><a href="{%url 'shop' %}" id="" {% if not request.GET.category_id %}class=""{% endif %}>Все</a></li>
-							{%for item in categories%}
-								<li><a href="{% url 'category' item.id %}" id="" {% if request.GET.category_id == item.id %}class="active"{% endif %}>{{item.name|truncatechars:50}}</a></li>
-							{%endfor%}
-						</ul>
-				
-					</div>
+
 					<div class="shop_content">
 						<div class="shop_item_full_content">
 								{% comment %} <img src="{{item.image.url}}" alt=""> {% endcomment %}
 								{% comment %} <a href="{%url 'item' item.id%}"><h2>{{item.name}}</h2></a> {% endcomment %}
-								<p>{{item.description}}</p>
-								<div class="item_navigate">
-									<div class="add_cart">В корзину</div>
-									<div class="item_coast">{{item.price}}</div>
+								<div class="item_photo">
+									<img src="{{item.image.url}}" alt="">
 								</div>
+								<div class="item_info">
+									<p>Дополнительная информация</p>
+									<table>
+										<tr>
+											<td style="">
+												<span class="item-layer-info-span">
+													<span class="table-span">Страна производитель:</span>
+												</span>
+
+											</td>
+											<td style="">
+												{{item.country}}
+											</td>
+										</tr>
+										<tr>
+											<td style="">
+												<span class="item-layer-info-span">
+													<span class="table-span">Брэнд:</span>
+												</span>
+												
+											</td>
+											<td style="">{{item.brand}}</td>
+										</tr>
+										<tr>
+											<td style="">
+												<span class="item-layer-info-span">
+													<span class="table-span">Тип витаминов:</span>
+												</span>
+												</td>
+											<td style="">{{item.type}}</td>
+										</tr>
+									</table>
+
+									<p>Краткое описание:</p>
+									<p style="font-weight: 400;">{{item.description}}</p>
+									<div class="item_navigate"style="width:100%;background:#FFFFFF;padding:20px 0px 20px 0px;justify-content: flex-start;">
+										<div class="add_cart"style="margin: 0px 8% 0px 0px;">В корзину</div>
+										<div class="item_coast">{{item.price}} ₽ \ шт.</div>
+									</div>
+								</div>
+								
+
+								
+
 						</div>
 
+						<div class="text-item">
+							<h2>Описание:</h2>
+							{{item.text|safe}}
+						</div>
+						
 					</div>
 				</div>
 		</div>

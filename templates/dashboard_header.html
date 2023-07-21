@@ -41,13 +41,15 @@
 <!--                    </div>-->
 <!--                </div>-->
                 				{%if request.user.is_authenticated%}
-				<div class="nav-user-info-layer" id="nav-user-info-layer">
+				<div class="nav-user-info-layer" id="nav-user-info-layer"style="display:flex;align-items:center;">
+                    <a href="{%url 'cart'%}" class="cart-link"><img src="{%static 'img/cart.png'%}" alt="">0</a>
 					<div class="" id="dropdown">
 					{{user.email}}
                     <img src="{%static 'img/1177568.png'%}" alt="" class="dropdown">
 					</div>
                     <div class="drop-down" id="drop-down">
-                        <a href="">Профиль</a>
+                        <a href="{%url 'profile'%}">Профиль</a>
+                        <a href="{%url 'cart'%}">Корзина</a>
 <!--                        <a href="">Истрия расшифровок</a>-->
 <!--                        <a href="">Здоровье</a>-->
                         <a href="{%url 'logout'%}">Выйти</a>

@@ -72,6 +72,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     description = models.TextField()
+    text = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='images/products/%Y/%m/%d/')
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, blank=True, null=True)

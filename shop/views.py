@@ -133,3 +133,7 @@ def item(request, item_id):
         'item': item,
     }
     return render(request, 'index/item.html', context)
+
+
+def cart(request):
+    return render(request, 'index/cart.html')

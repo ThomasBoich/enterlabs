@@ -1,5 +1,6 @@
+from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
-
+from django.db import models
 from shop.models import Cart, CartItem, Product, Category, OrderItem, Order, Payment, Brand, Country, Type
 
 
@@ -34,6 +35,9 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+    formfield_overrides = {
+        models.CharField: {'widget': CKEditorWidget},
+    }
 
 class CartItemInline(admin.TabularInline):
     model = CartItem
