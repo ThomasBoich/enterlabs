@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 
@@ -109,19 +111,19 @@ def shop(request):
     context = {
         'title': 'Магазин витаминов',
         'categories': categories,
-        'items': items,
+        'products': items,
     }
     return render(request, 'index/shop.html', context)
 
 
 def category(request, cat_id):
     categories = Category.objects.all()
-    items = Product.objects.filter(category=cat_id)
+    products = Product.objects.filter(category=cat_id)
     category = Category.objects.get(id=cat_id)
     context = {
         'title': '',
         'categories': categories,
-        'items': items,
+        'products': products,
         'category': category,
     }
     return render(request, 'index/category.html', context)
@@ -136,6 +138,27 @@ def item(request, item_id):
     }
     return render(request, 'index/item.html', context)
 
-
+@login_required
 def cart(request):
-    return render(request, 'index/cart.html')
+    cart = get_object_or_404(Cart, user=request.user)
+    cart_items = cart.items.all()
+    total_cost = cart.get_total_cost()
+    return render(request, 'index/cart.html', {'cart_items': cart_items, 'total_cost': total_cost})
+
+def add_to_cart(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        quantity = request.POST.get('quantity', 1)
+        product = get_object_or_404(Product, pk=product_id)
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+        cart_item.quantity += int(quantity)
+        cart_item.save()
+        referer = request.META.get('HTTP_REFERER')
+        if referer:
+            # Если есть заголовок Referer, выполняем редирект на эту страницу
+            return HttpResponseRedirect(referer)
+        else:
+            # Иначе возвращаем ответ в формате JSON
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False})

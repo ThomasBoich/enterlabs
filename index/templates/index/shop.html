@@ -15,18 +15,64 @@
 				
 					</div>
 					<div class="shop_content">
-						{%for item in items%}
+						{%for product in products%}
 							<div class="shop_item">
-								<img src="{{item.image.url}}" alt="">
-								<a href="{%url 'item' item.id %}"><h2>{{item.name|truncatechars:25}}</h2></a>
-								<p>{{item.description|truncatechars:50}}</p>
+								<img src="{{product.image.url}}" alt="">
+								<a href="{%url 'item' product.id %}"><h2>{{product.name|truncatechars:25}}</h2></a>
+								<p>{{product.description|truncatechars:50}}</p>
 								<div class="item_navigate">
-									<div class="add_cart">В корзину</div>
-									<div class="item_coast">{{item.price}} ₽</div>
+									{%if request.user.is_authenticated%}
+										<form id="add-to-cart-form-{{ product.id }}" method="post" action="{% url 'add_to_cart' %}"style="display: flex;
+										align-items: center;">
+										{% csrf_token %}
+										<input type="hidden" name="product_id" value="{{ product.id }}"style="max-width:47px;">
+										<div style="display:flex;flex-direction:column;margin:0px 12px 0px 0px;">
+										<label for="quantity-{{ product.id }}"style="    margin: 0px 0px 2px 0px;">Кол-во:</label>
+										<input type="number" name="quantity" id="quantity-{{ product.id }}" value="1" min="1"style="    max-width: 47px;
+										border: 1px solid #e7e7e7;
+										background: #e7e7e7;
+										padding: 4px 4px 4px 4px;
+										text-align: center;
+										border-radius: 8px;">
+									</div>
+										<button type="submit" class="add_cart">В корзину</button>
+										</form>									
+									{% comment %} <div class="add_cart">В корзину</div> {% endcomment %}
+									{%else%}
+									Авторизируйтесь
+									{%endif%}
+									<div class="item_coast">{{product.price}} ₽</div>
 								</div>
 															
 						</div>
 						{%endfor%}
+						
+						
+						
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+						
+						<script>
+							$('#add-to-cart-form').submit(function(event) {
+								event.preventDefault();  // Отменяем стандартное поведение
+								$.ajax({
+								  url: $(this).attr('action'),
+								  type: 'POST',
+								  data: $(this).serialize(),
+								  success: function(response) {
+									if (response.success) {
+									  // Обновляем количество товаров в корзине
+									  $('#cart-items-count').text(response.cart_items_count);
+									} else {
+									  alert('Не удалось добавить товар в корзину.');
+									}
+								  },
+								  error: function() {
+									alert('Не удалось добавить товар в корзину.');
+								  }
+								});
+							  });
+						  </script>
+					
 					</div>
 				</div>
 		</div>

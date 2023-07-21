@@ -1,7 +1,7 @@
 from django.urls import path
 
 from blog.views import blog, post
-from shop.views import category, shop, item, cart
+from shop.views import category, shop, item, cart, add_to_cart
 from subscribe.views import SubscribeView
 from users.views import AppLogoutView, login_modal, register_modal
 from .views import index, about, profile
@@ -20,4 +20,5 @@ urlpatterns = [
     path('shop/category/<int:cat_id>/', category, name='category'),
     path('shop/item/<int:item_id>/', item, name='item'),
     path('cart/', cart, name='cart'),
+    path('add-to-cart/', add_to_cart, name='add_to_cart'),
 ]

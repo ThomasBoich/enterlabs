@@ -6,9 +6,16 @@
 
 				<div class="shop_layer">
 					<div class="cart">
+						{%for item in cart_items%}
+						<div class="cart_item">
+							<img src="{{item.product.image.url}}" alt=""style="max-width:90px;">
+							{{item}}
+						</div>
+						{%endfor%}
 						
 					</div>
 				</div>
+				<strong>Товаров в корзине на сумму: {{total_cost}} рублей.</strong>
 		</div>
 	</div>
 {%endblock%}

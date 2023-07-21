@@ -12,6 +12,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
 		rel="stylesheet" />
+		
 </head>
 
 <body>
@@ -48,7 +49,7 @@
 				</div>				
 				{%if request.user.is_authenticated%}
 				<div class="nav-user-info-layer" id="nav-user-info-layer"style="display: flex;align-items:center;">
-					<a href="{%url 'cart'%}" class="cart-link"><img src="{%static 'img/cart.png'%}" alt="">0</a>
+					<a href="{%url 'cart'%}" class="cart-link"><img src="{%static 'img/cart.png'%}" alt=""></a>
 					<div class="" id="dropdown">
 					{{user.email}}
                     <img src="{%static 'img/1177568.png'%}" alt="" class="dropdown">
@@ -63,7 +64,6 @@
                 </div>
 				{%else%}
 				<div class="nav-user-info" id="nav-user-info"style="display: flex;align-items: center;">
-					<a href="{%url 'cart'%}" class="cart-link"><img src="{%static 'img/cart.png'%}" alt="">0</a>
 					<a href="#" class="sign_in" id="sign_in">Войти</a>
 					<a href="#" class="sign_up" id="sign_up">Создать аккаунт</a>
 				</div>

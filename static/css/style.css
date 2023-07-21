@@ -2988,6 +2988,7 @@ a#info {
     color: #9F9F9F;
     width: 90%;
     margin: 0 auto;
+    min-height: 100px;
 }
 
 .shop_item img {
@@ -3011,6 +3012,7 @@ a#info {
 }
 
 .add_cart {
+    border: none;
     display: flex;
     width: fit-content;
     height: 2.875rem;
@@ -3117,4 +3119,16 @@ span.table-span {
 
 .cart {
     padding: 20px 0px 200px 0px;
+    padding: 20px 0px 20px 0px;
+    min-height: 200px;
+}
+
+.cart_item {
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.cart_item img {
+    margin: 0px 20px 0px 0px;
 }
