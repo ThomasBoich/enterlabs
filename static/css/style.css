@@ -3009,6 +3009,7 @@ a#info {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: auto auto 20px;
 }
 
 .add_cart {
