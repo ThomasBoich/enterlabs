@@ -2950,6 +2950,7 @@ a#info {
 .shop_content {
     display: block;
     width: 100%;
+    padding: 20px 0px 0px 0px;
 }
 
 .shop_item {
