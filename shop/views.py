@@ -5,7 +5,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from .models import Category, Cart
+from .models import Category, Cart, Product
 from .serializers import CategorySerializer, CartSerializer
 
 
@@ -100,3 +100,36 @@ class PaymentViewSet(viewsets.ModelViewSet):
         """
         user = self.request.user
         return Payment.objects.filter(order__user=user)
+
+
+
+def shop(request):
+    categories = Category.objects.all()
+    items = Product.objects.all()
+    context = {
+        'title': 'Магазин витаминов',
+        'categories': categories,
+        'items': items,
+    }
+    return render(request, 'index/shop.html', context)
+
+
+def category(request, cat_id):
+    categories = Category.objects.all()
+    items = Product.objects.filter(category=cat_id)
+    context = {
+        'title': '',
+        'categories': categories,
+        'items': items,
+    }
+    return render(request, 'index/category.html', context)
+
+def item(request, item_id):
+    categories = Category.objects.all()
+    item = Product.objects.get(id=item_id)
+    context = {
+        'title': '',
+        'categories': categories,
+        'item': item,
+    }
+    return render(request, 'index/item.html', context)

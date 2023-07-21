@@ -1,0 +1,54 @@
+{%extends 'index.html'%}{%load static%}
+{%block content%}
+	<div class="company-layer" id="company-layer">
+		<div class="company-layer-text" id="company-layer-text">
+			<h1 style="margin: 0px 0px 5px 0px;border-bottom: 2px solid #e8e8e8;padding: 20px 0px 20px 0px;font-size: 40px;margin: auto auto 20px;">Витрина</h1>
+
+				<div class="shop_layer">
+					<div class="shop_filter">
+						<ul>
+							<li><a href="{%url 'shop' %}" id="" {% if not request.GET.category_id %}class=""{% endif %}>Все</a></li>
+							{%for item in categories%}
+								<li><a href="{% url 'category' item.id %}" id="" {% if request.GET.category_id == item.id %}class="active"{% endif %}>{{item.name|truncatechars:50}}</a></li>
+							{%endfor%}
+						</ul>
+				
+					</div>
+					<div class="shop_content">
+						{%for item in items%}
+							<div class="shop_item">
+								<img src="{{item.image.url}}" alt="">
+								<a href="{%url 'item' item.id%}"><h2>{{item.name|truncatechars:25}}</h2></a>								
+								<p>{{item.description|truncatechars:50}}</p>
+								<div class="item_navigate">
+									<div class="add_cart">В корзину</div>
+									<div class="item_coast">{{item.price}}</div>
+								</div>
+															
+						</div>
+						{%endfor%}
+					</div>
+				</div>
+
+
+
+
+
+
+
+
+
+			Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации,
+			например,
+			юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem
+			Ipsum
+			для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все
+			другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют,
+			пока
+			не достигнут нужный объём. Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum
+			генератором. Он использует словарь из более чем 200 латинских слов, а также набор моделей предложений. В
+			результате сгенерированный Lorem Ipsum выглядит правдоподобно, не имеет повторяющихся абзацей или
+			"невозможных" слов.
+		</div>
+	</div>
+{%endblock%}

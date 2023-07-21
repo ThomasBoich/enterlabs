@@ -3,12 +3,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
+from shop.models import Product, Category
 from users.forms import CustomUserCreationForm, CustomAuthenticationForm, UserUpdateForm
 
-
 # Create your views here.
-
-
 def login_view(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request=request, data=request.POST)
@@ -44,7 +42,6 @@ def index(request):
             'form': form,
         }
     return render(request, 'index/index.html', context )
-
 def about(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -63,12 +60,6 @@ def about(request):
         }
     return render(request, 'index/about.html', context)
 
-
-def shop(request):
-    context = {
-        'title': 'Магазин витаминов',
-    }
-    return render(request, 'index/shop.html', context)
 
 
 @login_required

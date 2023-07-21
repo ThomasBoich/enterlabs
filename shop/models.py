@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from users.models import CustomUser
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
@@ -21,6 +22,51 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
 
+class Brand(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('brand_detail', args=[self.slug])
+
+    class Meta:
+        verbose_name = 'Брэнд товара'
+        verbose_name_plural = 'Брэнды товаров'
+
+
+class Country(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('country_detail', args=[self.slug])
+
+    class Meta:
+        verbose_name = 'Страна производитель'
+        verbose_name_plural = 'Страны производители'
+
+
+class Type(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('type_detail', args=[self.slug])
+
+    class Meta:
+        verbose_name = 'Тип товара'
+        verbose_name_plural = 'Типы товаров'
+
+
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
@@ -28,6 +74,9 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='images/products/%Y/%m/%d/')
+    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, blank=True, null=True)
+    country = models.ForeignKey(Country, on_delete=models.PROTECT, blank=True, null=True)
+    type = models.ForeignKey(Type, on_delete=models.PROTECT, blank=True, null=True)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

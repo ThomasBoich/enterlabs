@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shop.models import Cart, CartItem, Product, Category, OrderItem, Order, Payment
+from shop.models import Cart, CartItem, Product, Category, OrderItem, Order, Payment, Brand, Country, Type
 
 
 # Register your models here.
@@ -9,6 +9,24 @@ from shop.models import Cart, CartItem, Product, Category, OrderItem, Order, Pay
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(Brand)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(Country)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(Type)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

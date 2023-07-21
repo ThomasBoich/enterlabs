@@ -2,7 +2,7 @@
 {%block content%}
 	<div class="company-layer" id="company-layer">
 		<div class="company-layer-text" id="company-layer-text">
-			<h1 style="margin: 0px 0px 5px 0px;border-bottom: 2px solid #e8e8e8;padding: 20px 0px 20px 0px;font-size: 40px;margin: auto auto 20px;">Витрина</h1>
+			<h1 style="margin: 0px 0px 5px 0px;border-bottom: 2px solid #e8e8e8;padding: 20px 0px 20px 0px;font-size: 40px;margin: auto auto 20px;">{{item.name}}</h1>
 
 				<div class="shop_layer">
 					<div class="shop_filter">
@@ -15,18 +15,16 @@
 				
 					</div>
 					<div class="shop_content">
-						{%for item in items%}
-							<div class="shop_item">
-								<img src="{{item.image.url}}" alt="">
-								<a href="{%url 'item' item.id %}"><h2>{{item.name|truncatechars:25}}</h2></a>
-								<p>{{item.description|truncatechars:50}}</p>
+						<div class="shop_item_full_content">
+								{% comment %} <img src="{{item.image.url}}" alt=""> {% endcomment %}
+								{% comment %} <a href="{%url 'item' item.id%}"><h2>{{item.name}}</h2></a> {% endcomment %}
+								<p>{{item.description}}</p>
 								<div class="item_navigate">
 									<div class="add_cart">В корзину</div>
 									<div class="item_coast">{{item.price}}</div>
 								</div>
-															
 						</div>
-						{%endfor%}
+
 					</div>
 				</div>
 		</div>
