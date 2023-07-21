@@ -117,10 +117,12 @@ def shop(request):
 def category(request, cat_id):
     categories = Category.objects.all()
     items = Product.objects.filter(category=cat_id)
+    category = Category.objects.get(id=cat_id)
     context = {
         'title': '',
         'categories': categories,
         'items': items,
+        'category': category,
     }
     return render(request, 'index/category.html', context)
 
